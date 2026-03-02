@@ -12,11 +12,11 @@ const wrapAsync = require("../middleware/wrapAsync.middleware");
  * - @description Register new user
  * - @access Public
  */
-authRouter.post("/register", authController.registerUserController);
+authRouter.post("/register", wrapAsync(authController.registerUserController));
 
 /**
  * - @route POST /api/auth/login
- * - @body { username, password }
+ * - @body { email, password }
  * - @description Login Route
  * - @access Public
  */

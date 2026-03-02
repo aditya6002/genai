@@ -1,25 +1,28 @@
 const mongoose = require("mongoose");
 const bcryptjs = require("bcryptjs");
 
-const userSchema = new mongoose.Schema({
-  username: {
-    type: String,
-    unique: [true, "Username already exist"],
-    required: true,
-    index: true,
-  },
-  email: {
-    type: String,
-    unique: [true, "Account already exists with this email address "],
-    required: true,
-  },
+const userSchema = new mongoose.Schema(
+  {
+    username: {
+      type: String,
+      unique: [true, "Username already exist"],
+      required: true,
+      index: true,
+    },
+    email: {
+      type: String,
+      unique: [true, "Account already exists with this email address "],
+      required: true,
+    },
 
-  password: {
-    type: String,
-    required: true,
-    select: false,
+    password: {
+      type: String,
+      required: true,
+      select: false,
+    },
   },
-});
+  { timestamps: true },
+);
 
 userSchema.pre("save", async function () {
   if (!this.isModified("password")) {
