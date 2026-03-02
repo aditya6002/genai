@@ -62,7 +62,39 @@ async function registerUserController(req, res) {
  * - @access Public
  */
 async function loginUserController(req, res) {
-  con;
+  const { email, password } = req.body;
+
+  const user = await userModel.findOne({ email: email }).select("+password");
+  if (!user) {
+    throw new AppError("User not exist", 400);
+  }
+
+  const isPasswordMatch = await user.comparePassword(password);
+  if (!isPasswordMatch) {
+    throw new AppError("Invalid credentials", 400);
+  }
+
+  const token = jwt.sign(
+    { userId: user._id, username: user.username },
+    process.env.JWT_SECRET,
+    {
+      expiresIn: "3d",
+    },
+  );
+
+  res.cookie("token", token, {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "strict",
+  });
+  res.status(200).json({
+    user: {
+      _id: user._id,
+      email: user.email,
+      username: user.username,
+    },
+    message: "Login successful",
+  });
 }
 
 /**
