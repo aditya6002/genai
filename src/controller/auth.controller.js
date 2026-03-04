@@ -100,7 +100,7 @@ async function loginUserController(req, res) {
 
 /**
  * - @name logoutUserController
- * - @description Logout Route
+ * - @description Clear token from user cookie and add the token in blacklist
  * - @access Protected
  */
 async function logoutUserController(req, res) {
@@ -112,8 +112,22 @@ async function logoutUserController(req, res) {
   });
 }
 
+/**
+ * @name getMeUserController
+ * @description Get the current logged in user details.
+ * @access Private
+ */
+async function getMeUserController(req, res) {
+  const user = req.user;
+
+  res.status(200).json({
+    user,
+  });
+}
+
 module.exports = {
   registerUserController,
   loginUserController,
   logoutUserController,
+  getMeUserController,
 };
