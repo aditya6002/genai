@@ -1,3 +1,71 @@
-.env
+# =========================
+# Node Modules
+# =========================
 node_modules/
-.DS_STORE/
+*/node_modules/
+
+# =========================
+# Logs
+# =========================
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# =========================
+# Environment Variables
+# =========================
+.env
+.env.*
+!.env.example
+
+# =========================
+# Build folders
+# =========================
+dist/
+build/
+frontend/build/
+backend/dist/
+
+# =========================
+# Coverage
+# =========================
+coverage/
+
+# =========================
+# Dependency directories
+# =========================
+.pnp
+.pnp.js
+
+# =========================
+# Mac System Files
+# =========================
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Thumbnails
+._*
+
+# =========================
+# VS Code / Editor files
+# =========================
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# =========================
+# Optional: Debug / Temp
+# =========================
+tmp/
+temp/
+.cache/
+
+# =========================
+# MongoDB (if local dump)
+# =========================
+dump/
