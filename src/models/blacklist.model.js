@@ -9,11 +9,6 @@ const blacklistSchema = new mongoose.Schema(
       index: true,
       immutable: true,
     },
-    expiredIn: {
-      type: Date,
-      default: Date.now,
-      immutable: true,
-    },
   },
   { timestamps: true },
 );

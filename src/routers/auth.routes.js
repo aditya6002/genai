@@ -21,14 +21,25 @@ authRouter.post("/register", wrapAsync(authController.registerUserController));
 authRouter.post("/login", wrapAsync(authController.loginUserController));
 
 /**
- * - @route POST /api/auth/logout
+ * - @route GET /api/auth/logout
  * - @description Logout Route
  * - @access Protected
  */
-authRouter.post(
+authRouter.get(
   "/logout",
   authMiddleware.isUserLogin,
   wrapAsync(authController.logoutUserController),
+);
+
+/**
+ * @route GET /api/auth/get-me
+ * @description Get the current logged in user details
+ * @access Private
+ */
+authRouter.get(
+  "/get-me",
+  authMiddleware.isUserLogin,
+  authController.getMeUserController,
 );
 
 module.exports = authRouter;
