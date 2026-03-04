@@ -1,0 +1,33 @@
+# Node modules
+node_modules/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Build output
+dist/
+build/
+
+# Coverage
+coverage/
+
+# Mac files
+.DS_Store
+
+# VS Code
+.vscode/
+.idea/
+
+# Temp
+tmp/
+temp/
+
+# MongoDB local dump
+dump/
