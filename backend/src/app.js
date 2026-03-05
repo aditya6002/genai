@@ -7,11 +7,12 @@ const app = express();
 
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors());
-/*{
-    origin: process.env.CLIENT_URL,
+app.use(
+  cors({
+    origin: process.env.CLIENT_URI,
     credentials: true,
-  }*/
+  }),
+);
 
 // Routes
 app.use("/api/auth", require("./routers/auth.routes"));
