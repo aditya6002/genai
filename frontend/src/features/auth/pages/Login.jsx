@@ -16,7 +16,9 @@ const Login = () => {
     }
     e.preventDefault();
 
-    await handleLogin(email, password);
+    console.log("Email", email);
+    await handleLogin({ email, password });
+
     navigate("/");
   };
 
@@ -27,6 +29,8 @@ const Login = () => {
       </main>
     );
   }
+
+  
 
   return (
     <main>
