@@ -10,7 +10,10 @@ export const useAuth = () => {
     setLoading(true);
     console.log("res -> ", email);
     const data = await login({ email, password });
+
     setUser(data.user);
+
+    console.log("Login done");
     setLoading(false);
   };
 
@@ -43,5 +46,11 @@ export const useAuth = () => {
     getAndSetUser();
   }, []);
 
-  return { handleLogin, handleRegister, handleLogout };
+  return {
+    handleLogin,
+    handleRegister,
+    handleLogout,
+    user: context.user,
+    loading: context.loading,
+  };
 };

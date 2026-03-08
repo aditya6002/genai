@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../auth.form.scss";
-import { Link, useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
 
 const Login = () => {
@@ -18,8 +18,7 @@ const Login = () => {
 
     console.log("Email", email);
     await handleLogin({ email, password });
-
-    navigate("/");
+    return navigate("/");
   };
 
   if (loading) {
@@ -29,8 +28,6 @@ const Login = () => {
       </main>
     );
   }
-
-  
 
   return (
     <main>
