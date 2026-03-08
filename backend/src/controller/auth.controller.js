@@ -9,9 +9,7 @@ const blackListModel = require("../models/blacklist.model");
  * - @access Public
  */
 async function registerUserController(req, res) {
-  console.log(req.body);
   const { username, email, password } = req.body;
-  console.log(username);
 
   if (
     !username ||

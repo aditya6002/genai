@@ -15,8 +15,6 @@ const Login = () => {
       return;
     }
     e.preventDefault();
-
-    console.log("Email", email);
     await handleLogin({ email, password });
     return navigate("/");
   };
