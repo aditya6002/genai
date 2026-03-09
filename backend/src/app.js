@@ -16,6 +16,7 @@ app.use(
 
 // Routes
 app.use("/api/auth", require("./routers/auth.routes"));
+app.use("/api/interview", require("../src/routers/interviewReport.routes"));
 
 app.get("/", (req, res) => {
   res.send("App is working");
