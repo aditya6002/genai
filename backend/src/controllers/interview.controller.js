@@ -33,10 +33,8 @@ async function generateInterviewReportController(req, res) {
     jobDescription,
   );
 
-  console.log("User",req.user);
-  console.log(interviewReport);
   const interviewReport = await interviewReportModel.create({
-    user: req.user._id,
+    userId: req.user._id,
     resume: resumeContent.text,
     llmModel: process.env.GOOGLE_GENAI_MODEL,
     selfDescription,

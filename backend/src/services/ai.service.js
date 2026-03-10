@@ -105,7 +105,7 @@ async function generateInterviewReport({
 `;
 
   const response = await ai.models.generateContent({
-    model: "gemini-3-flash-preview",
+    model: process.env.GOOGLE_GENAI_MODEL, //"gemini-3-flash-preview"
     contents: prompt,
     config: {
       responseMimeType: "application/json",
@@ -159,7 +159,7 @@ async function generateResumePdf({ resume, selfDescription, jobDescription }) {
                     `;
 
   const response = await ai.models.generateContent({
-    model: "gemini-3-flash-preview",
+    model: process.env.GOOGLE_GENAI_MODEL,
     contents: prompt,
     config: {
       responseMimeType: "application/json",
@@ -173,5 +173,25 @@ async function generateResumePdf({ resume, selfDescription, jobDescription }) {
 
   return pdfBuffer;
 }
+
+const getResByOfflineModel = async (prompt) => {
+  const res = await fetch("http://localhost:11434/api/v1/ollama", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      model: "gemini-3-flash-preview",
+      contents: prompt,
+      config: {
+        responseMimeType: "application/json",
+        responseSchema: zodToJsonSchema(interviewReportSchema),
+      },
+    }),
+  });
+
+  const data = await res.json();
+  return data;
+};
 
 module.exports = { generateInterviewReport, generateResumePdf };
