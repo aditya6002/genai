@@ -15,8 +15,9 @@ const Login = () => {
       return;
     }
     e.preventDefault();
+
     await handleLogin({ email, password });
-    return navigate("/");
+    navigate("/");
   };
 
   if (loading) {

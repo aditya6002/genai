@@ -33,6 +33,7 @@ export const useAuth = () => {
         const data = await getMe();
         setUser(data.user);
       } catch (error) {
+        setUser(null);
         console.log(error);
       } finally {
         setLoading(false);
