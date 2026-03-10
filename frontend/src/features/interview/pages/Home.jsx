@@ -4,7 +4,7 @@ import "../style/home.scss";
 import { useNavigate } from "react-router";
 
 const Home = () => {
-  // const { loading, generateReport } = useInterview();//reports
+  // const { loading, generateReport, reports} = useInterview();
   const reports = [];
   const [jobDescription, setJobDescription] = useState("");
   const [selfDescription, setSelfDescription] = useState("");
