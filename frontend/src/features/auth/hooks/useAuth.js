@@ -42,5 +42,11 @@ export const useAuth = () => {
     getAndSetUser();
   }, []);
 
-  return { handleLogin, handleRegister, handleLogout };
+  return {
+    handleLogin,
+    handleRegister,
+    handleLogout,
+    user: context.user,
+    loading: context.loading,
+  };
 };

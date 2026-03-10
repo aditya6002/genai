@@ -9,52 +9,36 @@ const api = axios.create({
 });
 
 export async function register({ username, email, password }) {
-  const res = await api
-    .post("/auth/register", {
-      email,
-      username,
-      password,
-    })
-    .then(() => {
-      return res.data;
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+  try {
+    const res = await api.post("/auth/register", { username, email, password });
+    return res.data;
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 export async function login({ email, password }) {
-  const res = await api
-    .post("/auth/login", {
-      email,
-      password,
-    })
-    .then(() => {
-      return res.data;
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+  try {
+    const res = await api.post("/auth/login", { email, password });
+    return res.data;
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 export async function logout() {
-  const res = await api
-    .post("/auth/logout")
-    .then(() => {
-      return res.data;
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+  try {
+    await api.post("/auth/logout");
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 export async function getMe() {
-  const res = await api
-    .get("/auth/get-me")
-    .then(() => {
-      return res.data;
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+  try {
+    const res = await api.get("/auth/me");
+    return res.data;
+  } catch (error) {
+    console.log(error);
+  }
 }
